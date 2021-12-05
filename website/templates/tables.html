@@ -1,0 +1,33 @@
+{% extends "base.html" %} {% block title %}Tables{% endblock %}
+{% block content %}
+<style>
+    div {
+      padding: 5px 0px;
+    }
+  </style>
+<form action="POST">
+    <h3 align="center">Records</h3>
+    <div class="form-group">
+    <table align="center" class="table table-hover">
+        <tr>
+            <th>email</th>
+            <th>Country name</th>
+            <th>Disease code</th>
+            <th>Total deaths</th>
+            <th>Total patients</th>
+        </tr>
+        {% for t in table %}
+        <tr>
+            <td>{{t.email}}</td>
+            <td>{{t.cname}}</td>
+            <td>{{t.disease_code}}</td>
+            <td>{{t.total_deaths}}</td>
+            <td>{{t.total_patients}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+</form>
+   {% endblock %}
+    
+

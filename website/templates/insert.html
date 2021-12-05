@@ -1,0 +1,65 @@
+{% extends "base.html" %} {% block title %}Insert to records{% endblock %} {% block content
+%}
+<style>
+  div {
+    padding: 5px 0px;
+  }
+</style>
+<form method="POST">
+  <div class="container">
+    <h3 align="center">Insert the data into records table</h3>
+    <p>*-required fields</p>
+    <div class="form-group">
+        <label for="email">Email*</label>
+        <input 
+          type="text" 
+          class="form-control" 
+          id="email" 
+          name="email" 
+          placeholder="Enter your email"/>
+    </div>
+    <div class="form-group">
+      <label for="cname">Country*</label>
+      <div>
+        <select name="country">
+          <option value="">Select Country</option>
+          {% for cname in country %}
+          <option value="{{cname}}">{{cname}}</option>
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+        <label for="disease_code">Disease code*</label>
+        <div>
+          <select name="disease_code">
+            <option value="">Select disease code</option>
+            {% for dcode in disease %}
+            <option value="{{dcode}}">{{dcode}}</option>
+            {% endfor %}
+          </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="total_deaths">Total deaths</label>
+        <input 
+          type="number" 
+          class="form-control" 
+          id="total_deaths" 
+          name="total_deaths" 
+          placeholder="Enter the number of total deaths"/>
+    </div>
+
+    <div class="form-group">
+        <label for="total_patients">Total patients</label>
+        <input 
+        type="number" 
+        class="form-control" 
+        id="total_patients" 
+        name="total_patients" 
+        placeholder="Enter the total patients"/>
+    </div>
+    <button type="submit" class="btn btn-primary">Insert</button>
+  </div>
+</form>
+{% endblock %}

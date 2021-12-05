@@ -1,0 +1,85 @@
+{% extends "base.html" %} {% block title %}Records{% endblock %}
+
+{% block content %}
+<style>
+    div {padding: 5px 0px;}
+  </style>
+<div class="container">
+<h3 align="center">Diseases database</h3>
+<h4 align="center">On this web page you can retrieve the infromation below and perform operations on "Records" table</h4>
+<form method="POST">
+    
+    <h5> Find the disease pathogen, description and id with disease code:</h5>
+    <div class="form-group">
+        <label for="disease_codes">Disease code</label>
+        <div>
+          <select name="disease_code">
+            <option value="">Select disease code</option>
+            {% for d in diseases %}
+            <option value="{{d.disease_code}}">{{d.disease_code}}</option>
+            {% endfor %}
+          </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="pathogen">Pathogen</label>
+        <div>
+          <select name="pathogen">
+            <option value="">Select pathogen</option>
+            {% for d in diseases %}
+            <option value="{{d.pathogen}}">{{d.pathogen}}</option>
+            {% endfor %}
+          </select>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label for="description">Description</label>
+        <div>
+          <select name="description">
+            <option value="">Select description</option>
+            {% for d in diseases %}
+            <option value="{{d.description}}">{{d.description}}</option>
+            {% endfor %}
+          </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="id">ID</label>
+        <div>
+          <select name="id">
+            <option value="">Select id</option>
+            {% for d in diseases %}
+            <option value="{{d.id}}">{{d.id}}</option>
+            {% endfor %}
+          </select>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-secondary">Find</button>
+    {% if not disease %}
+    <h4> no such disease </h4>
+    {% endif %}
+    <table class = "table table-hover">
+        {% if disease %}
+            <tr>
+                <th>Disease code</th>
+                <th>Pathogen</th>
+                <th>Description</th>
+                <th>ID</th>
+            </tr>
+            {% for dis in disease %}
+            <tr>
+                <td>{{dis.disease_code}}</td>
+                <td>{{dis.pathogen}}</td>
+                <td>{{dis.description}}</td>
+                <td>{{dis.id}}</td>
+            </tr>
+            {% endfor %}
+        {% endif %}
+    </table>
+
+</form>
+</div>
+{% endblock %}
